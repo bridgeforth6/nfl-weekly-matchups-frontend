@@ -101,6 +101,7 @@
             <label for="playerSeason">Season: </label>
             <input type="number" id="playerSeason" value="2022" min="2000" max="2024">
             <button onclick="fetchPlayerStats()" style="padding: 10px 20px; background-color: #00bcd4; border: none; color: #fff; font-size: 1em; cursor: pointer;">Get Player Stats</button>
+            <button onclick="resetSearch()" style="padding: 10px 20px; background-color: #f44336; border: none; color: #fff; font-size: 1em; cursor: pointer; margin-left: 10px;">Reset</button>
         </div>
         <div style="margin-top: 40px;">
             <h2>Team Game Log</h2>
@@ -109,6 +110,7 @@
             <label for="teamSeason">Season: </label>
             <input type="number" id="teamSeason" value="2022" min="2000" max="2024">
             <button onclick="fetchTeamStats()" style="padding: 10px 20px; background-color: #00bcd4; border: none; color: #fff; font-size: 1em; cursor: pointer;">Get Team Stats</button>
+            <button onclick="resetSearch()" style="padding: 10px 20px; background-color: #f44336; border: none; color: #fff; font-size: 1em; cursor: pointer; margin-left: 10px;">Reset</button>
         </div>
     </section>
     <section class="results">
@@ -194,6 +196,19 @@
                 });
                 tableBody.appendChild(row);
             });
+        }
+
+        // Function to reset the search inputs and clear results
+        function resetSearch() {
+            document.getElementById('player').value = '';
+            document.getElementById('position').value = 'QB';
+            document.getElementById('playerSeason').value = '2022';
+            document.getElementById('team').value = '';
+            document.getElementById('teamSeason').value = '2022';
+            const tableHead = document.querySelector('#resultsTable thead');
+            const tableBody = document.querySelector('#resultsTable tbody');
+            tableHead.innerHTML = '';
+            tableBody.innerHTML = '';
         }
     </script>
 </body>
